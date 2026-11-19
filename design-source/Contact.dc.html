@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Coastal Kitchen · Contact</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Manrope:wght@400;500;600;700&amp;display=swap">
+<style>
+/* Coastal Kitchen — design tokens (WCAG 2.2 AA checked)
+   deep ocean #174A5B (primary, 9.2:1 on warm white) · abyss #0F3340 (dark sections, 12.7:1 with warm white)
+   warm white #FAF9F5 (ground) · sand #E9DDC9 · light sand #F3ECE0 · charcoal #283438 (text, 12.2:1)
+   sea grey text #5C6766 (5.6:1 on warm white) · coral #E98270 — CTA fill with abyss text (5.0:1), accents on dark only
+   coral ink #A84B39 (text-safe coral on light, 5.3:1) · coastal blue #6FABB5 decorative / on dark only (5.2:1) · error #A33A2E */
+html{scroll-behavior:smooth}
+body{margin:0;background:#FAF9F5;color:#283438;font-family:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#174A5B}a:hover{color:#0F3340}
+p{margin:0}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid #174A5B;outline-offset:3px}
+.on-ocean :focus-visible,.on-abyss :focus-visible,.hero :focus-visible,.hdr-clear :focus-visible{outline-color:#F4C5BA}
+.skip{position:absolute;left:-9999px;top:10px;z-index:200;background:#174A5B;color:#FAF9F5;padding:12px 18px;text-decoration:none;font-weight:600;border-radius:999px}
+.skip:focus{left:10px;color:#FAF9F5}
+.serif{font-family:"DM Serif Display",Georgia,serif;font-weight:400}
+.disp{font-family:"DM Serif Display",Georgia,serif;font-weight:400;line-height:1;letter-spacing:-0.015em;margin:0}
+.disp em,.h2 em{font-style:italic;color:#174A5B}
+.on-ocean .disp em,.on-ocean .h2 em,.on-abyss .disp em,.on-abyss .h2 em,.hero .disp em{color:#F4C5BA}
+.h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;line-height:1.04;letter-spacing:-0.01em;font-size:clamp(38px,4.4vw,66px);margin:16px 0 0}
+.h3{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:clamp(23px,1.9vw,28px);line-height:1.15;margin:0}
+.wrap{width:100%;max-width:1400px;margin:0 auto;padding-left:clamp(20px,5vw,80px);padding-right:clamp(20px,5vw,80px)}
+.label{font-size:11.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#A84B39}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:11.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#A84B39}
+.eyebrow::before{content:"";width:26px;height:8px;flex:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='8' viewBox='0 0 26 8'%3E%3Cpath d='M1 4c3-3 5-3 8 0s5 3 8 0 5-3 8 0' fill='none' stroke='%23E98270' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center}
+.on-ocean .eyebrow,.on-abyss .eyebrow,.hero .eyebrow,.on-ocean .label,.on-abyss .label,.hero .label{color:#F4C5BA}
+.lead{font-size:clamp(16px,1.15vw,18.5px);line-height:1.75;color:#3E4A4D}
+.on-ocean .lead,.on-abyss .lead,.hero .lead{color:#DCE7E6}
+.hint{font-size:14px;line-height:1.65;color:#5C6766}
+.on-ocean .hint,.on-abyss .hint{color:#C9D6D5}
+.on-ocean{background:#174A5B;color:#FAF9F5}
+.on-abyss{background:#0F3340;color:#FAF9F5}
+.on-ocean a,.on-abyss a{color:#FAF9F5}
+.sand{background:#E9DDC9}
+.sand .hint{color:#4E5958}
+.shell{background:#F3ECE0}
+/* Tide-line texture: very subtle contour lines on sand / shell sections */
+.tide{position:relative;isolation:isolate}
+.tide::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='160' viewBox='0 0 320 160'%3E%3Cg fill='none' stroke='%23C9B796' stroke-width='.7'%3E%3Cpath d='M0 30c40-14 80-14 120 0s80 14 120 0 60-10 80-6'/%3E%3Cpath d='M0 70c40-14 80-14 120 0s80 14 120 0 60-10 80-6'/%3E%3Cpath d='M0 110c40-14 80-14 120 0s80 14 120 0 60-10 80-6'/%3E%3Cpath d='M0 150c40-14 80-14 120 0s80 14 120 0 60-10 80-6'/%3E%3C/g%3E%3C/svg%3E");background-size:320px 160px}
+.on-abyss.tide::before{opacity:.12;filter:invert(1)}
+/* Buttons: pill CTAs. Coral = the reservation action; ocean = everything else */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:54px;padding:0 30px;background:#174A5B;color:#FAF9F5;border:1.5px solid #174A5B;border-radius:999px;font:700 13px/1 "Manrope",sans-serif;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .3s ease,color .3s ease,border-color .3s ease,transform .3s ease}
+.btn:hover{background:#0F3340;border-color:#0F3340;color:#FAF9F5}
+.btn:active{transform:translateY(1px)}
+.btn:disabled,.btn[aria-busy="true"]{opacity:.65;cursor:progress}
+.btn-coral{background:#E98270;border-color:#E98270;color:#0F3340}
+.btn-coral:hover{background:#F09A8A;border-color:#F09A8A;color:#0F3340}
+.btn-ghost{background:transparent;color:#174A5B;border-color:#174A5B}
+.btn-ghost:hover{background:#174A5B;color:#FAF9F5}
+.btn-light{background:#FAF9F5;color:#0F3340;border-color:#FAF9F5}
+.btn-light:hover{background:#E9DDC9;border-color:#E9DDC9;color:#0F3340}
+.btn-ghost-light{background:transparent;color:#FAF9F5;border-color:rgba(250,249,245,.7)}
+.btn-ghost-light:hover{background:#FAF9F5;color:#0F3340;border-color:#FAF9F5}
+.arr{display:inline-block;transition:transform .3s ease}
+.btn:hover .arr,.tlink:hover .arr{transform:translateX(4px)}
+.tlink{display:inline-flex;align-items:center;gap:10px;min-height:44px;font:700 13px/1 "Manrope",sans-serif;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#174A5B;background:linear-gradient(#E98270,#E98270) 0 calc(100% - 10px)/100% 2px no-repeat;transition:background-size .35s ease,color .3s}
+.tlink:hover{background-size:30% 2px;color:#0F3340}
+.on-ocean .tlink,.on-abyss .tlink,.hero .tlink{color:#FAF9F5}
+button.tlink{border:0;cursor:pointer;background-color:transparent;padding:0}
+/* Header: clear over the photo hero, solid once scrolled */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s ease,box-shadow .4s ease,color .4s ease}
+.hdr-clear{background:linear-gradient(180deg,rgba(15,51,64,.55),rgba(15,51,64,0));color:#FAF9F5}
+.hdr-solid{background:rgba(250,249,245,.97);color:#283438;box-shadow:0 1px 0 #E2D7C3}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:20px;transition:height .35s ease}
+.logo{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.logo:hover{color:inherit}
+.logo-name{font:400 26px/1 "DM Serif Display",Georgia,serif;letter-spacing:-.005em;white-space:nowrap}
+.logo-sub{display:block;font-size:9.5px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;margin-top:6px;opacity:.85}
+.nav-link{position:relative;text-decoration:none;color:inherit;font-size:14px;font-weight:600;letter-spacing:.02em;padding:12px 2px;min-height:44px;display:inline-flex;align-items:center}
+.nav-link::after{content:"";position:absolute;left:2px;right:2px;bottom:6px;height:2px;border-radius:2px;background:#E98270;transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+.nav-link:hover{color:inherit}
+.nav-link:hover::after,.nav-link[aria-current="page"]::after{transform:scaleX(1)}
+.nav-links{display:flex;gap:clamp(14px,1.8vw,30px);align-items:center}
+.nav-toggle{display:none}
+.nav-res-sm{display:none!important}
+@media (max-width:1120px){.nav-links{display:none}.nav-toggle{display:inline-flex}}
+@media (max-width:560px){.nav-cta{display:none!important}.nav-res-sm{display:inline-flex!important}.logo-sub{display:none}.logo-name{font-size:22px}}
+.icon-btn{width:48px;height:48px;border:1.5px solid currentColor;background:transparent;color:inherit;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background .3s,color .3s,opacity .3s;opacity:.9}
+.icon-btn:hover{opacity:1;background:rgba(250,249,245,.14)}
+.hdr-solid .icon-btn:hover,.icon-btn.dark:hover{background:#174A5B;color:#FAF9F5;border-color:#174A5B}
+.drawer{position:fixed;inset:0;z-index:70;background:rgba(15,51,64,.5);display:flex;justify-content:flex-end}
+.drawer-panel{width:min(440px,100%);height:100%;background:#0F3340;color:#FAF9F5;padding:18px clamp(22px,5vw,40px) 30px;display:flex;flex-direction:column;overflow-y:auto;animation:slidein .4s cubic-bezier(.2,.7,.2,1) both}
+.mlink{display:flex;justify-content:space-between;align-items:baseline;padding:15px 0;border-bottom:1px solid rgba(111,171,181,.3);text-decoration:none;color:#FAF9F5;font:400 32px/1.1 "DM Serif Display",Georgia,serif;min-height:44px}
+.mlink:hover{color:#F4C5BA}
+.mlink[aria-current="page"]{font-style:italic;color:#F4C5BA}
+.mlink .label{color:#6FABB5}
+@keyframes slidein{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+/* Photo placeholders: illustrative only, never presented as real Coastal Kitchen photographs or dishes */
+.ph{position:relative;overflow:hidden;background-color:#2E5E6B;background-image:radial-gradient(120% 90% at 20% 12%,rgba(250,249,245,.26),transparent 55%),radial-gradient(90% 80% at 85% 92%,rgba(15,51,64,.6),transparent 60%);isolation:isolate}
+.ph::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.16;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='120' viewBox='0 0 160 120'%3E%3Cg fill='none' stroke='%23FAF9F5' stroke-width='.8'%3E%3Cpath d='M0 20c20-8 40-8 60 0s40 8 60 0 30-6 40-4'/%3E%3Cpath d='M0 60c20-8 40-8 60 0s40 8 60 0 30-6 40-4'/%3E%3Cpath d='M0 100c20-8 40-8 60 0s40 8 60 0 30-6 40-4'/%3E%3C/g%3E%3C/svg%3E");background-size:160px 120px}
+.ph-deep{background-color:#0F3340;background-image:radial-gradient(110% 90% at 30% 18%,rgba(111,171,181,.3),transparent 58%),radial-gradient(90% 80% at 85% 95%,rgba(0,0,0,.4),transparent 60%)}
+.ph-sand{background-color:#D6C4A5;background-image:radial-gradient(120% 90% at 20% 15%,rgba(250,249,245,.7),transparent 55%),radial-gradient(90% 80% at 85% 90%,rgba(23,74,91,.22),transparent 60%)}
+.ph-sand::before{filter:invert(1);opacity:.1}
+.ph-coral{background-color:#C8705F;background-image:radial-gradient(120% 90% at 25% 15%,rgba(250,249,245,.4),transparent 55%),radial-gradient(90% 80% at 80% 90%,rgba(15,51,64,.45),transparent 60%)}
+.ph-glass{background-color:#7FB0B8;background-image:radial-gradient(120% 90% at 25% 15%,rgba(250,249,245,.5),transparent 55%),radial-gradient(90% 80% at 80% 92%,rgba(15,51,64,.4),transparent 60%)}
+.ph-char{background-color:#283438;background-image:radial-gradient(110% 90% at 30% 20%,rgba(233,130,112,.2),transparent 58%),radial-gradient(90% 80% at 85% 95%,rgba(0,0,0,.5),transparent 60%)}
+.ph-tag{position:absolute;left:14px;bottom:14px;z-index:2;max-width:calc(100% - 28px);background:rgba(250,249,245,.94);color:#283438;font:700 10px/1.4 "Manrope",sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;border-radius:999px}
+.round{border-radius:6px}
+.zoom-host{overflow:hidden}
+.zoom{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.zoom-host:hover .zoom,.zoom-host:focus-visible .zoom,.zoom-host:focus-within .zoom{transform:scale(1.05)}
+.kb{animation:kb 24s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.09) translate(-1%,-1%)}}
+.pan{animation:pan 40s ease-in-out infinite alternate}
+@keyframes pan{from{transform:scale(1.12) translateX(-3%)}to{transform:scale(1.12) translateX(3%)}}
+.reveal{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.reveal-2{animation:rise .9s .12s cubic-bezier(.2,.7,.2,1) both}
+.reveal-3{animation:rise .9s .24s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.scrollcue{animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(7px);opacity:1}}
+/* Page hero (photo) */
+.hero{position:relative;overflow:hidden;background:#0F3340;color:#FAF9F5;display:flex;align-items:flex-end}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,51,64,.45) 0%,rgba(15,51,64,.15) 38%,rgba(15,51,64,.82) 100%)}
+.hero .ph-tag{top:clamp(96px,10vw,120px);bottom:auto;left:auto;right:clamp(20px,5vw,80px)}
+.page-hero{min-height:clamp(560px,52vw,760px)}
+/* Layout */
+.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,6vw,104px);align-items:center}
+.g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
+@media (max-width:900px){.split{grid-template-columns:minmax(0,1fr)}.g12{grid-template-columns:minmax(0,1fr)}.g12>*{grid-column:auto!important;grid-row:auto!important}}
+.section{padding:clamp(88px,10vw,160px) 0}
+.rule{height:1px;background:#DDD2BE;border:0;margin:0}
+.wave-rule{display:block;width:72px;height:10px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='10' viewBox='0 0 72 10'%3E%3Cpath d='M1 5c4-4 7-4 11 0s7 4 11 0 7-4 11 0 7 4 11 0 7-4 11 0 7 4 11 0' fill='none' stroke='%23E98270' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat}
+.chip{flex:none;min-height:46px;padding:0 20px;border:1.5px solid #BFB29B;background:transparent;color:#283438;font:600 14px/1 "Manrope",sans-serif;cursor:pointer;border-radius:999px;display:inline-flex;align-items:center;gap:9px;text-decoration:none;transition:background .3s,color .3s,border-color .3s}
+.chip:hover{border-color:#174A5B;color:#174A5B}
+.chip[aria-pressed="true"],.chip[aria-current="true"]{background:#174A5B;border-color:#174A5B;color:#FAF9F5}
+.chip .n{font-size:12px;opacity:.75}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 8px}
+.chips::-webkit-scrollbar{display:none}
+.todo{border:1.5px dashed #A88F6A;background:rgba(243,236,224,.85);padding:14px 16px;font-size:13.5px;line-height:1.6;color:#4A4033;border-radius:6px}
+.todo-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#A84B39;margin-right:8px}
+.on-ocean .todo,.on-abyss .todo{background:rgba(250,249,245,.06);border-color:rgba(111,171,181,.6);color:#DCE7E6}
+.on-ocean .todo-tag,.on-abyss .todo-tag{color:#F4C5BA}
+.hide-notes .todo{display:none!important}
+.sample{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#174A5B;border:1.5px solid rgba(23,74,91,.45);padding:4px 9px;background:#FAF9F5;border-radius:999px}
+.price-tbc{font-size:12.5px;font-weight:700;letter-spacing:.06em;color:#A84B39;white-space:nowrap}
+/* Forms */
+.field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.field label,.field .flabel{font-size:14px;font-weight:700;color:#283438}
+.req{color:#A84B39}
+.opt{font-weight:500;color:#5C6766}
+.input{width:100%;min-height:54px;padding:12px 16px;background:#FFFFFF;border:1.5px solid #B9AE9A;border-radius:8px;font:500 16px/1.4 "Manrope",sans-serif;color:#283438;transition:border-color .25s,box-shadow .25s}
+.input:hover{border-color:#174A5B}
+.input:focus{outline:none;border-color:#174A5B;box-shadow:0 0 0 3px rgba(23,74,91,.18)}
+.input[aria-invalid="true"]{border-color:#A33A2E;box-shadow:0 0 0 3px rgba(163,58,46,.12)}
+select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23283438' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px;cursor:pointer}
+textarea.input{min-height:132px;resize:vertical}
+.err{font-size:13.5px;color:#A33A2E;line-height:1.5;font-weight:700;display:flex;gap:8px;align-items:flex-start}
+.err::before{content:"!";flex:none;width:17px;height:17px;border-radius:50%;background:#A33A2E;color:#FFFFFF;font-size:11px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.notice{padding:16px 18px;border-radius:8px;background:#FFFFFF;border:1.5px solid #D6CCB8;font-size:14.5px;line-height:1.65}
+.notice-err{border-color:#A33A2E;background:#FBEFEC}
+.notice-warn{border:1.5px dashed #A88F6A;background:#F3ECE0}
+.form-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+@media (max-width:600px){.form-2{grid-template-columns:minmax(0,1fr)}}
+.stepper{display:flex;align-items:center;border:1.5px solid #B9AE9A;border-radius:999px;background:#FFFFFF;min-height:54px;width:max-content;max-width:100%}
+.stepper button{width:52px;height:52px;border:0;background:transparent;color:#174A5B;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.stepper button:hover:not(:disabled){background:#E9DDC9}
+.stepper button:disabled{color:#A9B0AE;cursor:not-allowed}
+.stepper input{width:64px;border:0;text-align:center;font:700 18px/1 "Manrope",sans-serif;color:#283438;background:transparent;min-height:50px;-moz-appearance:textfield}
+.stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.stepper input:focus{outline:none}
+.stepper:focus-within{border-color:#174A5B;box-shadow:0 0 0 3px rgba(23,74,91,.18)}
+.stepper[data-invalid="true"]{border-color:#A33A2E}
+.spinner{width:16px;height:16px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .8s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* Lightbox */
+.lightbox{position:fixed;inset:0;z-index:90;background:rgba(10,30,38,.97);color:#FAF9F5;display:flex;flex-direction:column;padding:clamp(12px,2vw,28px)}
+.lb-side{flex:none}
+.lb-mobile{display:none}
+@media (max-width:700px){.lb-side{display:none}.lb-mobile{display:inline-flex}}
+/* Footer */
+.foot a{color:#DCE7E6;text-decoration:none}.foot a:hover{color:#FFFFFF;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#E98270}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.foot li a{display:inline-flex;min-height:36px;align-items:center}
+.sticky-cta{display:none}
+@media (max-width:767px){.sticky-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;gap:8px;padding:10px 12px;background:rgba(250,249,245,.97);border-top:1px solid #DDD2BE}.sticky-cta .btn{flex:1;min-height:50px;padding:0 10px;letter-spacing:.04em}.site-pad{padding-bottom:72px}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hide-sm{}
+.show-sm{display:none}
+@media (max-width:700px){.hide-sm{display:none!important}.show-sm{display:block}}
+@media (max-width:374px){.btn{padding:0 18px;font-size:12px}.chip{padding:0 14px}.wrap{padding-left:16px;padding-right:16px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+.crumbs{list-style:none;display:flex;gap:10px;margin:0;padding:0;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#DCE7E6}
+.crumbs a{color:#FAF9F5;text-decoration:none;display:inline-flex;min-height:32px;align-items:center}
+.ct-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:-64px;position:relative;z-index:3}
+.ct-card{background:#FFFFFF;border:1px solid #E2D7C3;border-radius:10px;padding:28px 26px 24px;display:flex;flex-direction:column;gap:10px;box-shadow:0 24px 50px -36px rgba(15,51,64,.4)}
+.ct-card .ct-val{font:400 clamp(22px,1.9vw,27px)/1.25 "DM Serif Display",serif;color:#283438;text-decoration:none;overflow-wrap:anywhere}
+.ct-card a.ct-val:hover{color:#174A5B;text-decoration:underline;text-decoration-color:#E98270;text-underline-offset:5px}
+.ct-acts{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:auto;padding-top:8px}
+.copy-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid #BFB29B;background:transparent;color:#174A5B;font:700 13px/1 "Manrope",sans-serif;cursor:pointer}
+.copy-btn:hover{border-color:#174A5B}
+@media (max-width:1000px){.ct-cards{grid-template-columns:minmax(0,1fr);margin-top:-48px}}
+.map{position:relative;display:block;border-radius:10px;overflow:hidden;aspect-ratio:16 / 10;background:#E9DDC9}
+.map-tag{position:absolute;left:16px;bottom:16px;z-index:2;background:#FAF9F5;color:#174A5B;font:700 12px/1 "Manrope",sans-serif;letter-spacing:.06em;padding:12px 16px;border-radius:999px}
+.hours{width:100%;border-collapse:collapse;font-size:15.5px}
+.hours th,.hours td{padding:14px 0;border-bottom:1px solid rgba(111,171,181,.3);text-align:left}
+.hours th{font-weight:700;color:#FAF9F5}
+.hours td{text-align:right;color:#DCE7E6}
+.badge-ph{display:inline-flex;align-items:center;gap:6px;border:1.5px dashed #6FABB5;color:#C9D6D5;border-radius:999px;padding:4px 10px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.badge-ok{display:inline-flex;align-items:center;gap:6px;background:#6FABB5;color:#0F3340;border-radius:999px;padding:5px 11px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+
+</style>
+</helmet>
+<div class="site-pad {{notesCls}}">
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr {{hdrCls}}">
+<div class="wrap hdr-in" style="height: {{hdrH}}px">
+<a class="logo" href="Main.dc.html" aria-label="Coastal Kitchen, home"><svg width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true"><circle cx="21" cy="21" r="19.5" stroke="currentColor" stroke-width="1.3"></circle><path d="M9 19c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0" stroke="#E98270" stroke-width="1.6" stroke-linecap="round"></path><path d="M9 25c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg><span><span class="logo-name">Coastal Kitchen</span><span class="logo-sub">Seafood · Santa Rosa</span></span></a>
+<nav aria-label="Primary" class="nav-links">
+<a class="nav-link" href="Main.dc.html">Home</a>
+<a class="nav-link" href="Menu.dc.html">Menu</a>
+<a class="nav-link" href="About.dc.html">About</a>
+<a class="nav-link" href="Experience.dc.html">Our Experience</a>
+<a class="nav-link" href="Gallery.dc.html">Gallery</a>
+<a class="nav-link" href="Contact.dc.html" aria-current="page">Contact</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 10px">
+<a class="btn btn-coral nav-cta" href="Reservations.dc.html" style="min-height: 48px; padding: 0 24px">Reservations</a>
+<a class="btn btn-coral nav-res-sm" href="Reservations.dc.html" style="min-height: 44px; padding: 0 16px; font-size: 12px">Reserve</a>
+<button type="button" class="icon-btn nav-toggle" aria-label="Open menu" aria-expanded="{{menuExpanded}}" aria-controls="site-drawer" onClick="{{openMenu}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18"/><path d="M3 12h18"/><path d="M3 17h12"/></svg></button>
+</div>
+</div>
+</header>
+<sc-if value="{{menu}}" hint-placeholder-val="{{false}}">
+<div class="drawer" onClick="{{backdropClose}}">
+<div id="site-drawer" class="drawer-panel" role="dialog" aria-modal="true" aria-label="Site menu" onKeyDown="{{menuKey}}">
+<div style="display: flex; justify-content: space-between; align-items: center; min-height: 60px">
+<span class="label" style="color: #F4C5BA">Menu</span>
+<button type="button" class="icon-btn" autoFocus="{{true}}" aria-label="Close menu" onClick="{{closeMenu}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12"/><path d="M18 6 6 18"/></svg></button>
+</div>
+<nav aria-label="Mobile" style="display: flex; flex-direction: column; margin-top: 10px">
+<a class="mlink" href="Main.dc.html">Home<span class="label" aria-hidden="true">01</span></a>
+<a class="mlink" href="Menu.dc.html">Menu<span class="label" aria-hidden="true">02</span></a>
+<a class="mlink" href="About.dc.html">About<span class="label" aria-hidden="true">03</span></a>
+<a class="mlink" href="Experience.dc.html">Our Experience<span class="label" aria-hidden="true">04</span></a>
+<a class="mlink" href="Gallery.dc.html">Gallery<span class="label" aria-hidden="true">05</span></a>
+<a class="mlink" href="Reservations.dc.html">Reservations<span class="label" aria-hidden="true">06</span></a>
+<a class="mlink" href="Contact.dc.html" aria-current="page">Contact<span class="label" aria-hidden="true">07</span></a>
+</nav>
+<div style="margin-top: auto; padding-top: 30px; display: flex; flex-direction: column; gap: 10px">
+<a class="btn btn-coral" href="Reservations.dc.html" style="width: 100%">Reserve Your Table <span class="arr" aria-hidden="true">→</span></a>
+<a class="btn btn-ghost-light" href="tel:+18563821942" style="width: 100%">Call +1 (856) 382-1942</a>
+<p class="hint" style="text-align: center; margin-top: 8px; color: #C9D6D5">8945 Forest Road, Santa Rosa, CA 95401</p>
+</div>
+</div>
+</div>
+</sc-if>
+<main id="main">
+<section aria-labelledby="page-h" class="hero" style="min-height: clamp(520px, 46vw, 680px)">
+<div aria-hidden="true" style="position: absolute; inset: 0"><div class="ph ph-sand " style="position: absolute; inset: 0"><div class="ph ph-sand kb" style="position: absolute; inset: 0" aria-hidden="true"></div></div><div class="hero-shade"></div></div>
+<p class="ph-tag">Photo placeholder · Warm view of the dining room</p>
+<div class="wrap" style="position: relative; padding-top: 150px; padding-bottom: clamp(100px, 10vw, 140px)">
+<nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="Main.dc.html">Home</a></li><li aria-hidden="true" style="color: #E98270; display: flex; align-items: center">/</li><li aria-current="page" style="display: flex; align-items: center; color: #F4C5BA">Contact</li></ol></nav>
+<div class="g12" style="margin-top: clamp(28px, 5vw, 64px); align-items: end">
+<h1 id="page-h" class="disp reveal" style="grid-column: span 7; font-size: clamp(54px, 7.4vw, 120px)">We’d Love to <em>Hear From You.</em></h1>
+<p class="lead reveal-2" style="grid-column: 9 / span 4">Questions, feedback or planning a visit? Call, email or send a message, and our team will be glad to help.</p>
+</div>
+</div>
+</section>
+
+<section aria-label="Contact details" style="padding-bottom: clamp(72px, 8vw, 120px)">
+<div class="wrap">
+<div class="ct-cards">
+<div class="ct-card">
+<p class="label" style="display: flex; gap: 10px; align-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg> Address</p>
+<address class="ct-val" style="font-style: normal">8945 Forest Road,<br>Santa Rosa, CA 95401, USA</address>
+<div class="ct-acts">
+<a class="tlink" href="https://www.google.com/maps/dir/?api=1&amp;destination=8945+Forest+Road%2C+Santa+Rosa%2C+CA+95401" target="_blank" rel="noopener noreferrer">Get Directions <span class="arr" aria-hidden="true">↗</span><span class="sr"> (opens Google Maps in a new tab)</span></a>
+<button type="button" class="copy-btn" onClick="{{copyAddr}}"><sc-if value="{{copied}}" hint-placeholder-val="{{false}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>Copied</sc-if><sc-if value="{{notCopied}}" hint-placeholder-val="{{true}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="12" height="12" rx="2"/><path d="M15.5 8.5V5.5a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3"/></svg>Copy address</sc-if></button>
+</div>
+<p class="sr" role="status">{{copyStatus}}</p>
+</div>
+<div class="ct-card">
+<p class="label" style="display: flex; gap: 10px; align-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3.5l1.8 4.6-2.3 1.4a11 11 0 0 0 5 5l1.4-2.3L19 13.5V17a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 3 5.2 2 2 0 0 1 5 3z"/></svg> Phone</p>
+<a class="ct-val" href="tel:+18563821942">+1 (856) 382-1942</a>
+<div class="ct-acts"><a class="tlink" href="tel:+18563821942">Call Coastal Kitchen <span class="arr" aria-hidden="true">→</span></a></div>
+</div>
+<div class="ct-card">
+<p class="label" style="display: flex; gap: 10px; align-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg> Email</p>
+<a class="ct-val" href="mailto:coastalkitchen@outlook.com">coastalkitchen@outlook.com</a>
+<div class="ct-acts"><a class="tlink" href="mailto:coastalkitchen@outlook.com?subject=Hello%20Coastal%20Kitchen">Write to Us <span class="arr" aria-hidden="true">→</span></a></div>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="loc-h" class="section shell tide" style="padding-top: clamp(72px, 8vw, 120px)">
+<div class="wrap g12" style="align-items: start">
+<div style="grid-column: span 7">
+<p class="eyebrow">Location</p>
+<h2 id="loc-h" class="h2" style="margin-bottom: 30px">Find us on <em>Forest Road.</em></h2>
+<a class="map zoom-host" href="https://www.google.com/maps/search/?api=1&amp;query=8945+Forest+Road%2C+Santa+Rosa%2C+CA+95401" target="_blank" rel="noopener noreferrer" aria-label="Map preview of 8945 Forest Road, Santa Rosa, CA 95401, USA. Opens Google Maps in a new tab">
+<svg class="zoom" viewBox="0 0 800 500" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="position: absolute; inset: 0"><rect width="800" height="500" fill="#E9DDC9"></rect><path d="M0 380 C160 340 260 420 420 380 S680 330 800 360 V500 H0Z" fill="#B9D3D6"></path><path d="M0 410 C160 370 260 450 420 410 S680 360 800 390" fill="none" stroke="#FAF9F5" stroke-width="2"></path><g stroke="#FAF9F5" stroke-width="18" fill="none"><path d="M-20 210 L820 180"></path><path d="M300 -20 L340 400"></path></g><g stroke="#FAF9F5" stroke-width="7" fill="none"><path d="M-20 90 L820 64"></path><path d="M110 -20 L140 380"></path><path d="M560 -20 L540 380"></path><path d="M700 -20 L690 360"></path></g><text x="420" y="176" font-family="Manrope, sans-serif" font-size="13" font-weight="700" letter-spacing="3" fill="#5C6766" transform="rotate(-2 420 176)">FOREST ROAD</text><g transform="translate(330 196)"><circle r="42" fill="#E98270" opacity=".18"></circle><path d="M0 22s-18-16-18-30a18 18 0 0 1 36 0C18 6 0 22 0 22z" fill="#174A5B" transform="translate(0 -22)"></path><circle cy="-30" r="6.5" fill="#FAF9F5"></circle></g></svg>
+<span class="map-tag">Map preview · Open in Google Maps ↗</span>
+</a>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px">
+<a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=8945+Forest+Road%2C+Santa+Rosa%2C+CA+95401" target="_blank" rel="noopener noreferrer">Get Directions <span class="arr" aria-hidden="true">↗</span><span class="sr"> (opens Google Maps in a new tab)</span></a>
+<a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=8945+Forest+Road%2C+Santa+Rosa%2C+CA+95401" target="_blank" rel="noopener noreferrer">View on Google Maps<span class="sr"> (opens in a new tab)</span></a>
+</div>
+<p class="hint" style="margin-top: 16px; font-size: 13.5px">Illustrative preview of the supplied address; the live Google Maps embed for 8945 Forest Road, Santa Rosa, CA 95401, USA is added at build. The address is shown as supplied and has not been independently verified.</p>
+</div>
+<div style="grid-column: 9 / span 4">
+<div class="on-abyss" style="border-radius: 10px; padding: clamp(24px, 3vw, 36px)">
+<p class="label" style="display: flex; gap: 10px; align-items: center; color: #F4C5BA"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> Opening hours</p>
+<h3 class="h3" style="margin-top: 14px; color: #FAF9F5">Hours to be confirmed</h3>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px" aria-label="Legend">
+<span class="badge-ph">Placeholder</span><span class="badge-ok"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>Confirmed</span>
+</div>
+<table class="hours" style="margin-top: 14px">
+<caption class="sr">Opening hours. All rows are placeholders until confirmed by Coastal Kitchen.</caption>
+<tbody>
+<sc-for list="{{days}}" as="d" hint-placeholder-count="7">
+<tr><th scope="row">{{d}}</th><td><span class="badge-ph">Hours to confirm</span></td></tr>
+</sc-for>
+</tbody>
+</table>
+<p class="hint" style="margin-top: 16px">Please call <a href="tel:+18563821942">+1 (856) 382-1942</a> before visiting. Confirmed hours will be shown with the solid “Confirmed” label.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="form-h" class="section">
+<div class="wrap g12" style="align-items: start">
+<div style="grid-column: span 4">
+<p class="eyebrow">Send a message</p>
+<h2 id="form-h" class="h2" style="font-size: clamp(36px, 3.6vw, 56px)">How can we <em>help?</em></h2>
+<p class="lead" style="margin-top: 18px">For general questions and feedback. To request a table, please use the reservation inquiry form.</p>
+<a class="tlink" href="Reservations.dc.html" style="margin-top: 16px">Make a Reservation Inquiry <span class="arr" aria-hidden="true">→</span></a>
+</div>
+<div style="grid-column: 6 / span 7">
+<sc-if value="{{showForm}}" hint-placeholder-val="{{true}}">
+<sc-if value="{{isInvalid}}" hint-placeholder-val="{{false}}"><div class="notice notice-err" role="alert" style="margin-bottom: 24px"><strong>{{errSummary}}</strong></div></sc-if>
+<form noValidate="{{true}}" onSubmit="{{onSubmit}}">
+<div class="form-2">
+<div class="field">
+<label for="fld-name">Name <span class="req" aria-hidden="true">*</span></label>
+<input id="fld-name" class="input" name="name" type="text" autoComplete="name" value="{{f.name}}" onChange="{{onField}}" onBlur="{{onBlur}}" aria-required="true" aria-invalid="{{fx.name.invalid}}" aria-describedby="{{fx.name.desc}}">
+<sc-if value="{{fx.name.has}}" hint-placeholder-val="{{false}}"><p id="name-err" class="err">{{fx.name.err}}</p></sc-if>
+</div>
+<div class="field">
+<label for="fld-email">Email <span class="req" aria-hidden="true">*</span></label>
+<input id="fld-email" class="input" name="email" type="email" autoComplete="email" inputMode="email" value="{{f.email}}" onChange="{{onField}}" onBlur="{{onBlur}}" aria-required="true" aria-invalid="{{fx.email.invalid}}" aria-describedby="{{fx.email.desc}}">
+<sc-if value="{{fx.email.has}}" hint-placeholder-val="{{false}}"><p id="email-err" class="err">{{fx.email.err}}</p></sc-if>
+</div>
+<div class="field" style="grid-column: 1 / -1">
+<label for="fld-subject">Subject <span class="req" aria-hidden="true">*</span></label>
+<input id="fld-subject" class="input" name="subject" type="text" value="{{f.subject}}" onChange="{{onField}}" onBlur="{{onBlur}}" aria-required="true" aria-invalid="{{fx.subject.invalid}}" aria-describedby="{{fx.subject.desc}}">
+<sc-if value="{{fx.subject.has}}" hint-placeholder-val="{{false}}"><p id="subject-err" class="err">{{fx.subject.err}}</p></sc-if>
+</div>
+<div class="field" style="grid-column: 1 / -1">
+<label for="fld-message">Message <span class="req" aria-hidden="true">*</span></label>
+<textarea id="fld-message" class="input" name="message" rows="6" maxLength="1600" value="{{f.message}}" onChange="{{onField}}" onBlur="{{onBlur}}" aria-required="true" aria-invalid="{{fx.message.invalid}}" aria-describedby="{{fx.message.desc}}"></textarea>
+<p id="message-hint" class="hint" style="font-size: 13px; text-align: right">{{msgCount}}</p>
+<sc-if value="{{fx.message.has}}" hint-placeholder-val="{{false}}"><p id="message-err" class="err">{{fx.message.err}}</p></sc-if>
+</div>
+</div>
+<div class="sr" aria-hidden="true"><label for="fld-website">Website</label><input id="fld-website" name="website" type="text" tabIndex="-1" autoComplete="off" value="{{f.website}}" onChange="{{onField}}"></div>
+<sc-if value="{{isUnsent}}" hint-placeholder-val="{{false}}">
+<div class="notice notice-warn" role="status" style="margin-top: 26px">
+<p style="font-weight: 800">Not sent yet.</p>
+<p style="margin-top: 6px">This design isn’t connected to a message service, so your message hasn’t reached Coastal Kitchen. Your details are still here. Send it from your email app instead, or call <a href="tel:+18563821942">+1 (856) 382-1942</a>.</p>
+<a class="btn btn-ghost" href="{{mailtoHref}}" style="margin-top: 14px; min-height: 48px">Open This in Your Email <span class="arr" aria-hidden="true">→</span></a>
+</div>
+</sc-if>
+<sc-if value="{{isFailure}}" hint-placeholder-val="{{false}}">
+<div class="notice notice-err" role="alert" style="margin-top: 26px"><p style="font-weight: 800; color: #A33A2E">Your message couldn’t be sent.</p><p style="margin-top: 6px">Your details are still here. Please try again, or <a href="{{mailtoHref}}">send it by email</a>.</p></div>
+</sc-if>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 28px">
+<button type="submit" class="btn" aria-busy="{{busy}}" disabled="{{isSending}}" style="min-width: 220px"><sc-if value="{{isSending}}" hint-placeholder-val="{{false}}"><span class="spinner" aria-hidden="true"></span>Sending…</sc-if><sc-if value="{{notSending}}" hint-placeholder-val="{{true}}">Send Message <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 10 14"/><path d="M21 3l-7 18-4-7-7-4z"/></svg></sc-if></button>
+<p class="hint" style="font-size: 13.5px">Used only to reply to your message.</p>
+</div>
+</form>
+</sc-if>
+<sc-if value="{{isSuccess}}" hint-placeholder-val="{{false}}">
+<div role="status" class="notice" style="padding: clamp(24px, 3vw, 40px); animation: rise .45s ease both">
+<span style="width: 60px; height: 60px; border-radius: 999px; background: #E9DDC9; color: #174A5B; display: inline-flex; align-items: center; justify-content: center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg></span>
+<h3 class="disp" tabIndex="-1" autoFocus="{{true}}" style="font-size: clamp(30px, 3vw, 44px); margin-top: 20px; outline: none">Thank you, {{firstName}}. <em>Message received.</em></h3>
+<p class="lead" style="margin-top: 12px">Our team will reply to <strong>{{f.email}}</strong> as soon as possible. For anything urgent, please call <a href="tel:+18563821942">+1 (856) 382-1942</a>.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px">
+<a class="btn btn-coral" href="Reservations.dc.html">Reserve a Table <span class="arr" aria-hidden="true">→</span></a>
+<button type="button" class="btn btn-ghost" onClick="{{resetForm}}">Send Another Message</button>
+</div>
+</div>
+</sc-if>
+</div>
+</div>
+</section>
+</main>
+<footer class="foot on-abyss tide" style="padding: clamp(80px, 9vw, 120px) 0 34px">
+<div class="wrap">
+<div style="display: flex; flex-wrap: wrap; gap: 48px; justify-content: space-between; padding-bottom: 54px; border-bottom: 1px solid rgba(111,171,181,.3)">
+<div style="flex: 1 1 320px; max-width: 400px">
+<div style="color: #FAF9F5"><a class="logo" href="Main.dc.html" aria-label="Coastal Kitchen, home"><svg width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true"><circle cx="21" cy="21" r="19.5" stroke="currentColor" stroke-width="1.3"></circle><path d="M9 19c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0" stroke="#E98270" stroke-width="1.6" stroke-linecap="round"></path><path d="M9 25c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg><span><span class="logo-name">Coastal Kitchen</span><span class="logo-sub">Seafood · Santa Rosa</span></span></a></div>
+<p style="margin: 24px 0 28px; line-height: 1.75; font-size: 15px; color: #C9D6D5">A seafood restaurant in Santa Rosa, California, serving coastal-inspired dishes in a relaxed, welcoming dining room.</p>
+<a class="btn btn-coral" href="Reservations.dc.html">Reserve Your Table <span class="arr" aria-hidden="true">→</span></a>
+</div>
+<nav aria-label="Footer" style="flex: 0 1 170px">
+<p class="label" style="margin-bottom: 14px; color: #F4C5BA">Explore</p>
+<ul>
+<li><a href="Main.dc.html">Home</a></li>
+<li><a href="Menu.dc.html">Menu</a></li>
+<li><a href="About.dc.html">About</a></li>
+<li><a href="Experience.dc.html">Our Experience</a></li>
+<li><a href="Gallery.dc.html">Gallery</a></li>
+<li><a href="Reservations.dc.html">Reservations</a></li>
+<li><a href="Contact.dc.html">Contact</a></li>
+</ul>
+</nav>
+<div style="flex: 0 1 290px">
+<p class="label" style="margin-bottom: 14px; color: #F4C5BA">Visit &amp; contact</p>
+<address style="font-style: normal; line-height: 1.75; color: #DCE7E6; font-size: 15px">
+<a href="https://www.google.com/maps/search/?api=1&amp;query=8945+Forest+Road%2C+Santa+Rosa%2C+CA+95401" target="_blank" rel="noopener noreferrer">8945 Forest Road<br>Santa Rosa, CA 95401, USA<span class="sr"> (opens Google Maps in a new tab)</span></a><br>
+<a href="tel:+18563821942" style="display: inline-flex; min-height: 40px; align-items: center">+1 (856) 382-1942</a><br>
+<a href="mailto:coastalkitchen@outlook.com" style="display: inline-flex; min-height: 40px; align-items: center; word-break: break-all">coastalkitchen@outlook.com</a>
+</address>
+<a class="tlink" href="https://www.google.com/maps/dir/?api=1&amp;destination=8945+Forest+Road%2C+Santa+Rosa%2C+CA+95401" target="_blank" rel="noopener noreferrer" style="margin-top: 6px">Get Directions <span class="arr" aria-hidden="true">↗</span><span class="sr"> (opens Google Maps in a new tab)</span></a>
+</div>
+<div style="flex: 0 1 240px">
+<p class="label" style="margin-bottom: 14px; color: #F4C5BA">Hours</p>
+<p style="font-size: 15px; line-height: 1.7; color: #DCE7E6">Opening hours to be confirmed. Please call before visiting.</p>
+<p class="todo" style="margin-top: 14px"><span class="todo-tag">Placeholder</span>Opening hours and social media accounts will appear here once Coastal Kitchen confirms them.</p>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; padding-top: 26px; font-size: 13px; color: #C9D6D5">
+<p>© 2026 Coastal Kitchen. All rights reserved.</p>
+<p>Reservation inquiries are confirmed by our team. Menu items and prices are subject to confirmation.</p>
+</div>
+</div>
+</footer>
+<div class="sticky-cta" role="region" aria-label="Quick actions">
+<a class="btn btn-coral" href="Reservations.dc.html">Reserve a Table</a>
+<a class="btn btn-ghost" href="tel:+18563821942">Call</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"formState":{"editor":"enum","options":["Live (no backend)","Success (with backend)","Error"],"default":"Live (no backend)","label":"Form state","section":"Contact form"},"clientNotes":{"editor":"boolean","default":true,"label":"Show “client to supply” notes","section":"Presentation"},"$preview":{"width":1440,"height":4000}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { menu: false, scrolled: false, copied: false, ...this.formInit() };
+  }
+  navMount() {
+  this._onScroll = () => {
+    const s = window.scrollY > 40;
+    if (s !== !!this.state.scrolled) this.setState({ scrolled: s });
+    if (this.onScrollExtra) this.onScrollExtra();
+  };
+  window.addEventListener('scroll', this._onScroll, { passive: true });
+  this._onScroll();
+}
+navUnmount() {
+  if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+}
+navVals() {
+  // The header sits clear over each page's photo hero and turns solid once the page scrolls (or the drawer opens).
+  const solid = !!this.state.scrolled;
+  return {
+    notesCls: this.props.clientNotes === false ? 'hide-notes' : '',
+    hdrCls: solid ? 'hdr-solid' : 'hdr-clear',
+    hdrH: solid ? 72 : 96,
+    menu: !!this.state.menu,
+    menuExpanded: this.state.menu ? 'true' : 'false',
+    openMenu: () => this.setState({ menu: true }),
+    closeMenu: () => this.setState({ menu: false }),
+    backdropClose: (e) => { if (e.target === e.currentTarget) this.setState({ menu: false }); },
+    menuKey: (e) => {
+      if (e.key === 'Escape') { this.setState({ menu: false }); return; }
+      if (e.key !== 'Tab') return;
+      const nodes = Array.from(e.currentTarget.querySelectorAll('a[href], button')).filter((b) => b.offsetParent !== null);
+      if (!nodes.length) return;
+      const first = nodes[0], last = nodes[nodes.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  };
+}
+
+  emailErr(v) {
+  if (!v.trim()) return 'Please enter your email address.';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim())) return 'Enter an email address like name@example.com.';
+  return '';
+}
+phoneErr(v, required) {
+  const d = v.replace(/\D/g, '');
+  if (!v.trim()) return required ? 'Please enter a phone number so our team can reach you.' : '';
+  if (d.length < 10 || d.length > 15) return 'Enter a phone number with 10 to 15 digits.';
+  return '';
+}
+/**
+ * Shared form state for the Reservations and Contact forms.
+ * cfg: { order, labels, validate(f) → errors, mailto(f) → href }
+ * There is no backend in this design: a valid submission ends in the honest "not sent" state unless the
+ * Form state tweak previews the success or error screens a connected backend would produce.
+ */
+formVals(cfg) {
+  const f = this.state.f;
+  const errs = cfg.validate(f);
+  const fx = {};
+  cfg.order.forEach((k) => {
+    const m = (this.state.submitted || this.state.seen[k]) && errs[k] ? errs[k] : '';
+    fx[k] = { err: m, has: !!m, invalid: m ? 'true' : 'false', desc: m ? k + '-err' : k + '-hint' };
+  });
+  const pv = this.props.formState;
+  const status = pv === 'Success (with backend)' ? 'success' : pv === 'Error' ? 'failure' : this.state.status;
+  const bad = cfg.order.filter((k) => errs[k]);
+  const setF = (patch) => this.setState({ f: { ...this.state.f, ...patch }, status: ['unsent', 'failure'].includes(this.state.status) ? 'idle' : this.state.status });
+  return {
+    f, fx, setF,
+    onField: (e) => setF({ [e.target.name]: e.target.value }),
+    onBlur: (e) => this.setState({ seen: { ...this.state.seen, [e.target.name]: true } }),
+    isInvalid: status === 'invalid' && bad.length > 0,
+    errSummary: (bad.length === 1 ? 'Please check 1 field: ' : 'Please check ' + bad.length + ' fields: ') + bad.map((k) => cfg.labels[k]).join(', ') + '.',
+    isSending: status === 'sending',
+    notSending: status !== 'sending',
+    isUnsent: status === 'unsent',
+    isSuccess: status === 'success',
+    isFailure: status === 'failure',
+    showForm: status !== 'success',
+    busy: status === 'sending' ? 'true' : 'false',
+    firstName: (f.name.trim().split(' ')[0]) || 'there',
+    mailtoHref: cfg.mailto(f),
+    resetForm: () => this.setState(this.formInit()),
+    onSubmit: (e) => {
+      e.preventDefault();
+      if (this.state.status === 'sending') return;
+      if (this.state.f.website) return; // honeypot: bots fill the hidden field, people don't
+      const er = cfg.validate(this.state.f);
+      const first = cfg.order.find((k) => er[k]);
+      if (first) {
+        this.setState({ submitted: true, status: 'invalid' });
+        setTimeout(() => { const el = document.getElementById('fld-' + first); if (el) el.focus(); }, 0);
+        return;
+      }
+      this.setState({ submitted: true, status: 'sending' });
+      clearTimeout(this._send);
+      // INTEGRATION POINT: no reservation or contact backend was supplied. Replace this timeout with a POST to
+      // Coastal Kitchen's endpoint and set status to 'success' or 'failure' from the real response.
+      // Never show the "received" screen without one, and never present an inquiry as a confirmed booking.
+      this._send = setTimeout(() => this.setState({ status: 'unsent' }), 900);
+    }
+  };
+}
+
+  formInit() {
+    return { f: { name: '', email: '', subject: '', message: '', website: '' }, seen: {}, submitted: false, status: 'idle' };
+  }
+  validate(f) {
+    const e = {};
+    if (f.name.trim().length < 2) e.name = 'Please enter your name.';
+    const em = this.emailErr(f.email); if (em) e.email = em;
+    if (f.subject.trim().length < 2) e.subject = 'Please add a short subject.';
+    if (f.message.trim().length < 10) e.message = 'Please write a short message (at least 10 characters).';
+    else if (f.message.length > 1500) e.message = 'Please keep your message under 1,500 characters.';
+    return e;
+  }
+  componentDidMount() { this.navMount(); }
+  componentWillUnmount() { this.navUnmount(); clearTimeout(this._send); clearTimeout(this._cp); }
+  renderVals() {
+    const fv = this.formVals({
+      order: ['name', 'email', 'subject', 'message'],
+      labels: { name: 'Name', email: 'Email', subject: 'Subject', message: 'Message' },
+      validate: (f) => this.validate(f),
+      mailto: (f) => 'mailto:coastalkitchen@outlook.com?subject=' + encodeURIComponent(f.subject || 'Hello Coastal Kitchen') + '&body=' + encodeURIComponent(f.message + '\n\n' + f.name)
+    });
+    const sample = this.props.formState === 'Success (with backend)' && !fv.f.name;
+    const addr = '8945 Forest Road, Santa Rosa, CA 95401, USA';
+    return {
+      ...this.navVals(),
+      ...fv,
+      f: sample ? { ...fv.f, name: 'Jordan Lee', email: 'jordan@example.com' } : fv.f,
+      firstName: sample ? 'Jordan' : fv.firstName,
+      msgCount: fv.f.message.length + ' / 1500',
+      days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      copied: !!this.state.copied,
+      notCopied: !this.state.copied,
+      copyStatus: this.state.copied ? 'Address copied to clipboard.' : '',
+      copyAddr: () => {
+        const done = () => { this.setState({ copied: true }); clearTimeout(this._cp); this._cp = setTimeout(() => this.setState({ copied: false }), 2500); };
+        try { navigator.clipboard.writeText(addr).then(done, () => {}); } catch (e) {}
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Coastal Kitchen · Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Manrope:wght@400;500;600;700&amp;display=swap">
+<style>
+/* Coastal Kitchen — design tokens (WCAG 2.2 AA checked)
+   deep ocean #174A5B (primary, 9.2:1 on warm white) · abyss #0F3340 (dark sections, 12.7:1 with warm white)
+   warm white #FAF9F5 (ground) · sand #E9DDC9 · light sand #F3ECE0 · charcoal #283438 (text, 12.2:1)
+   sea grey text #5C6766 (5.6:1 on warm white) · coral #E98270 — CTA fill with abyss text (5.0:1), accents on dark only
+   coral ink #A84B39 (text-safe coral on light, 5.3:1) · coastal blue #6FABB5 decorative / on dark only (5.2:1) · error #A33A2E */
+html{scroll-behavior:smooth}
+body{margin:0;background:#FAF9F5;color:#283438;font-family:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#174A5B}a:hover{color:#0F3340}
+p{margin:0}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid #174A5B;outline-offset:3px}
+.on-ocean :focus-visible,.on-abyss :focus-visible,.hero :focus-visible,.hdr-clear :focus-visible{outline-color:#F4C5BA}
+.skip{position:absolute;left:-9999px;top:10px;z-index:200;background:#174A5B;color:#FAF9F5;padding:12px 18px;text-decoration:none;font-weight:600;border-radius:999px}
+.skip:focus{left:10px;color:#FAF9F5}
+.serif{font-family:"DM Serif Display",Georgia,serif;font-weight:400}
+.disp{font-family:"DM Serif Display",Georgia,serif;font-weight:400;line-height:1;letter-spacing:-0.015em;margin:0}
+.disp em,.h2 em{font-style:italic;color:#174A5B}
+.on-ocean .disp em,.on-ocean .h2 em,.on-abyss .disp em,.on-abyss .h2 em,.hero .disp em{color:#F4C5BA}
+.h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;line-height:1.04;letter-spacing:-0.01em;font-size:clamp(38px,4.4vw,66px);margin:16px 0 0}
+.h3{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:clamp(23px,1.9vw,28px);line-height:1.15;margin:0}
+.wrap{width:100%;max-width:1400px;margin:0 auto;padding-left:clamp(20px,5vw,80px);padding-right:clamp(20px,5vw,80px)}
+.label{font-size:11.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#A84B39}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:11.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#A84B39}
+.eyebrow::before{content:"";width:26px;height:8px;flex:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='8' viewBox='0 0 26 8'%3E%3Cpath d='M1 4c3-3 5-3 8 0s5 3 8 0 5-3 8 0' fill='none' stroke='%23E98270' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center}
+.on-ocean .eyebrow,.on-abyss .eyebrow,.hero .eyebrow,.on-ocean .label,.on-abyss .label,.hero .label{color:#F4C5BA}
+.lead{font-size:clamp(16px,1.15vw,18.5px);line-height:1.75;color:#3E4A4D}
+.on-ocean .lead,.on-abyss .lead,.hero .lead{color:#DCE7E6}
+.hint{font-size:14px;line-height:1.65;color:#5C6766}
+.on-ocean .hint,.on-abyss .hint{color:#C9D6D5}
+.on-ocean{background:#174A5B;color:#FAF9F5}
+.on-abyss{background:#0F3340;color:#FAF9F5}
+.on-ocean a,.on-abyss a{color:#FAF9F5}
+.sand{background:#E9DDC9}
+.sand .hint{color:#4E5958}
+.shell{background:#F3ECE0}
+/* Tide-line texture: very subtle contour lines on sand / shell sections */
+.tide{position:relative;isolation:isolate}
+.tide::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='160' viewBox='0 0 320 160'%3E%3Cg fill='none' stroke='%23C9B796' stroke-width='.7'%3E%3Cpath d='M0 30c40-14 80-14 120 0s80 14 120 0 60-10 80-6'/%3E%3Cpath d='M0 70c40-14 80-14 120 0s80 14 120 0 60-10 80-6'/%3E%3Cpath d='M0 110c40-14 80-14 120 0s80 14 120 0 60-10 80-6'/%3E%3Cpath d='M0 150c40-14 80-14 120 0s80 14 120 0 60-10 80-6'/%3E%3C/g%3E%3C/svg%3E");background-size:320px 160px}
+.on-abyss.tide::before{opacity:.12;filter:invert(1)}
+/* Buttons: pill CTAs. Coral = the reservation action; ocean = everything else */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:54px;padding:0 30px;background:#174A5B;color:#FAF9F5;border:1.5px solid #174A5B;border-radius:999px;font:700 13px/1 "Manrope",sans-serif;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .3s ease,color .3s ease,border-color .3s ease,transform .3s ease}
+.btn:hover{background:#0F3340;border-color:#0F3340;color:#FAF9F5}
+.btn:active{transform:translateY(1px)}
+.btn:disabled,.btn[aria-busy="true"]{opacity:.65;cursor:progress}
+.btn-coral{background:#E98270;border-color:#E98270;color:#0F3340}
+.btn-coral:hover{background:#F09A8A;border-color:#F09A8A;color:#0F3340}
+.btn-ghost{background:transparent;color:#174A5B;border-color:#174A5B}
+.btn-ghost:hover{background:#174A5B;color:#FAF9F5}
+.btn-light{background:#FAF9F5;color:#0F3340;border-color:#FAF9F5}
+.btn-light:hover{background:#E9DDC9;border-color:#E9DDC9;color:#0F3340}
+.btn-ghost-light{background:transparent;color:#FAF9F5;border-color:rgba(250,249,245,.7)}
+.btn-ghost-light:hover{background:#FAF9F5;color:#0F3340;border-color:#FAF9F5}
+.arr{display:inline-block;transition:transform .3s ease}
+.btn:hover .arr,.tlink:hover .arr{transform:translateX(4px)}
+.tlink{display:inline-flex;align-items:center;gap:10px;min-height:44px;font:700 13px/1 "Manrope",sans-serif;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#174A5B;background:linear-gradient(#E98270,#E98270) 0 calc(100% - 10px)/100% 2px no-repeat;transition:background-size .35s ease,color .3s}
+.tlink:hover{background-size:30% 2px;color:#0F3340}
+.on-ocean .tlink,.on-abyss .tlink,.hero .tlink{color:#FAF9F5}
+button.tlink{border:0;cursor:pointer;background-color:transparent;padding:0}
+/* Header: clear over the photo hero, solid once scrolled */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s ease,box-shadow .4s ease,color .4s ease}
+.hdr-clear{background:linear-gradient(180deg,rgba(15,51,64,.55),rgba(15,51,64,0));color:#FAF9F5}
+.hdr-solid{background:rgba(250,249,245,.97);color:#283438;box-shadow:0 1px 0 #E2D7C3}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:20px;transition:height .35s ease}
+.logo{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.logo:hover{color:inherit}
+.logo-name{font:400 26px/1 "DM Serif Display",Georgia,serif;letter-spacing:-.005em;white-space:nowrap}
+.logo-sub{display:block;font-size:9.5px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;margin-top:6px;opacity:.85}
+.nav-link{position:relative;text-decoration:none;color:inherit;font-size:14px;font-weight:600;letter-spacing:.02em;padding:12px 2px;min-height:44px;display:inline-flex;align-items:center}
+.nav-link::after{content:"";position:absolute;left:2px;right:2px;bottom:6px;height:2px;border-radius:2px;background:#E98270;transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+.nav-link:hover{color:inherit}
+.nav-link:hover::after,.nav-link[aria-current="page"]::after{transform:scaleX(1)}
+.nav-links{display:flex;gap:clamp(14px,1.8vw,30px);align-items:center}
+.nav-toggle{display:none}
+.nav-res-sm{display:none!important}
+@media (max-width:1120px){.nav-links{display:none}.nav-toggle{display:inline-flex}}
+@media (max-width:560px){.nav-cta{display:none!important}.nav-res-sm{display:inline-flex!important}.logo-sub{display:none}.logo-name{font-size:22px}}
+.icon-btn{width:48px;height:48px;border:1.5px solid currentColor;background:transparent;color:inherit;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background .3s,color .3s,opacity .3s;opacity:.9}
+.icon-btn:hover{opacity:1;background:rgba(250,249,245,.14)}
+.hdr-solid .icon-btn:hover,.icon-btn.dark:hover{background:#174A5B;color:#FAF9F5;border-color:#174A5B}
+.drawer{position:fixed;inset:0;z-index:70;background:rgba(15,51,64,.5);display:flex;justify-content:flex-end}
+.drawer-panel{width:min(440px,100%);height:100%;background:#0F3340;color:#FAF9F5;padding:18px clamp(22px,5vw,40px) 30px;display:flex;flex-direction:column;overflow-y:auto;animation:slidein .4s cubic-bezier(.2,.7,.2,1) both}
+.mlink{display:flex;justify-content:space-between;align-items:baseline;padding:15px 0;border-bottom:1px solid rgba(111,171,181,.3);text-decoration:none;color:#FAF9F5;font:400 32px/1.1 "DM Serif Display",Georgia,serif;min-height:44px}
+.mlink:hover{color:#F4C5BA}
+.mlink[aria-current="page"]{font-style:italic;color:#F4C5BA}
+.mlink .label{color:#6FABB5}
+@keyframes slidein{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+/* Photo placeholders: illustrative only, never presented as real Coastal Kitchen photographs or dishes */
+.ph{position:relative;overflow:hidden;background-color:#2E5E6B;background-image:radial-gradient(120% 90% at 20% 12%,rgba(250,249,245,.26),transparent 55%),radial-gradient(90% 80% at 85% 92%,rgba(15,51,64,.6),transparent 60%);isolation:isolate}
+.ph::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.16;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='120' viewBox='0 0 160 120'%3E%3Cg fill='none' stroke='%23FAF9F5' stroke-width='.8'%3E%3Cpath d='M0 20c20-8 40-8 60 0s40 8 60 0 30-6 40-4'/%3E%3Cpath d='M0 60c20-8 40-8 60 0s40 8 60 0 30-6 40-4'/%3E%3Cpath d='M0 100c20-8 40-8 60 0s40 8 60 0 30-6 40-4'/%3E%3C/g%3E%3C/svg%3E");background-size:160px 120px}
+.ph-deep{background-color:#0F3340;background-image:radial-gradient(110% 90% at 30% 18%,rgba(111,171,181,.3),transparent 58%),radial-gradient(90% 80% at 85% 95%,rgba(0,0,0,.4),transparent 60%)}
+.ph-sand{background-color:#D6C4A5;background-image:radial-gradient(120% 90% at 20% 15%,rgba(250,249,245,.7),transparent 55%),radial-gradient(90% 80% at 85% 90%,rgba(23,74,91,.22),transparent 60%)}
+.ph-sand::before{filter:invert(1);opacity:.1}
+.ph-coral{background-color:#C8705F;background-image:radial-gradient(120% 90% at 25% 15%,rgba(250,249,245,.4),transparent 55%),radial-gradient(90% 80% at 80% 90%,rgba(15,51,64,.45),transparent 60%)}
+.ph-glass{background-color:#7FB0B8;background-image:radial-gradient(120% 90% at 25% 15%,rgba(250,249,245,.5),transparent 55%),radial-gradient(90% 80% at 80% 92%,rgba(15,51,64,.4),transparent 60%)}
+.ph-char{background-color:#283438;background-image:radial-gradient(110% 90% at 30% 20%,rgba(233,130,112,.2),transparent 58%),radial-gradient(90% 80% at 85% 95%,rgba(0,0,0,.5),transparent 60%)}
+.ph-tag{position:absolute;left:14px;bottom:14px;z-index:2;max-width:calc(100% - 28px);background:rgba(250,249,245,.94);color:#283438;font:700 10px/1.4 "Manrope",sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;border-radius:999px}
+.round{border-radius:6px}
+.zoom-host{overflow:hidden}
+.zoom{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.zoom-host:hover .zoom,.zoom-host:focus-visible .zoom,.zoom-host:focus-within .zoom{transform:scale(1.05)}
+.kb{animation:kb 24s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.09) translate(-1%,-1%)}}
+.pan{animation:pan 40s ease-in-out infinite alternate}
+@keyframes pan{from{transform:scale(1.12) translateX(-3%)}to{transform:scale(1.12) translateX(3%)}}
+.reveal{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.reveal-2{animation:rise .9s .12s cubic-bezier(.2,.7,.2,1) both}
+.reveal-3{animation:rise .9s .24s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.scrollcue{animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(7px);opacity:1}}
+/* Page hero (photo) */
+.hero{position:relative;overflow:hidden;background:#0F3340;color:#FAF9F5;display:flex;align-items:flex-end}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,51,64,.45) 0%,rgba(15,51,64,.15) 38%,rgba(15,51,64,.82) 100%)}
+.hero .ph-tag{top:clamp(96px,10vw,120px);bottom:auto;left:auto;right:clamp(20px,5vw,80px)}
+.page-hero{min-height:clamp(560px,52vw,760px)}
+/* Layout */
+.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,6vw,104px);align-items:center}
+.g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
+@media (max-width:900px){.split{grid-template-columns:minmax(0,1fr)}.g12{grid-template-columns:minmax(0,1fr)}.g12>*{grid-column:auto!important;grid-row:auto!important}}
+.section{padding:clamp(88px,10vw,160px) 0}
+.rule{height:1px;background:#DDD2BE;border:0;margin:0}
+.wave-rule{display:block;width:72px;height:10px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='10' viewBox='0 0 72 10'%3E%3Cpath d='M1 5c4-4 7-4 11 0s7 4 11 0 7-4 11 0 7 4 11 0 7-4 11 0 7 4 11 0' fill='none' stroke='%23E98270' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat}
+.chip{flex:none;min-height:46px;padding:0 20px;border:1.5px solid #BFB29B;background:transparent;color:#283438;font:600 14px/1 "Manrope",sans-serif;cursor:pointer;border-radius:999px;display:inline-flex;align-items:center;gap:9px;text-decoration:none;transition:background .3s,color .3s,border-color .3s}
+.chip:hover{border-color:#174A5B;color:#174A5B}
+.chip[aria-pressed="true"],.chip[aria-current="true"]{background:#174A5B;border-color:#174A5B;color:#FAF9F5}
+.chip .n{font-size:12px;opacity:.75}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 8px}
+.chips::-webkit-scrollbar{display:none}
+.todo{border:1.5px dashed #A88F6A;background:rgba(243,236,224,.85);padding:14px 16px;font-size:13.5px;line-height:1.6;color:#4A4033;border-radius:6px}
+.todo-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#A84B39;margin-right:8px}
+.on-ocean .todo,.on-abyss .todo{background:rgba(250,249,245,.06);border-color:rgba(111,171,181,.6);color:#DCE7E6}
+.on-ocean .todo-tag,.on-abyss .todo-tag{color:#F4C5BA}
+.hide-notes .todo{display:none!important}
+.sample{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#174A5B;border:1.5px solid rgba(23,74,91,.45);padding:4px 9px;background:#FAF9F5;border-radius:999px}
+.price-tbc{font-size:12.5px;font-weight:700;letter-spacing:.06em;color:#A84B39;white-space:nowrap}
+/* Forms */
+.field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.field label,.field .flabel{font-size:14px;font-weight:700;color:#283438}
+.req{color:#A84B39}
+.opt{font-weight:500;color:#5C6766}
+.input{width:100%;min-height:54px;padding:12px 16px;background:#FFFFFF;border:1.5px solid #B9AE9A;border-radius:8px;font:500 16px/1.4 "Manrope",sans-serif;color:#283438;transition:border-color .25s,box-shadow .25s}
+.input:hover{border-color:#174A5B}
+.input:focus{outline:none;border-color:#174A5B;box-shadow:0 0 0 3px rgba(23,74,91,.18)}
+.input[aria-invalid="true"]{border-color:#A33A2E;box-shadow:0 0 0 3px rgba(163,58,46,.12)}
+select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23283438' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px;cursor:pointer}
+textarea.input{min-height:132px;resize:vertical}
+.err{font-size:13.5px;color:#A33A2E;line-height:1.5;font-weight:700;display:flex;gap:8px;align-items:flex-start}
+.err::before{content:"!";flex:none;width:17px;height:17px;border-radius:50%;background:#A33A2E;color:#FFFFFF;font-size:11px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.notice{padding:16px 18px;border-radius:8px;background:#FFFFFF;border:1.5px solid #D6CCB8;font-size:14.5px;line-height:1.65}
+.notice-err{border-color:#A33A2E;background:#FBEFEC}
+.notice-warn{border:1.5px dashed #A88F6A;background:#F3ECE0}
+.form-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+@media (max-width:600px){.form-2{grid-template-columns:minmax(0,1fr)}}
+.stepper{display:flex;align-items:center;border:1.5px solid #B9AE9A;border-radius:999px;background:#FFFFFF;min-height:54px;width:max-content;max-width:100%}
+.stepper button{width:52px;height:52px;border:0;background:transparent;color:#174A5B;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.stepper button:hover:not(:disabled){background:#E9DDC9}
+.stepper button:disabled{color:#A9B0AE;cursor:not-allowed}
+.stepper input{width:64px;border:0;text-align:center;font:700 18px/1 "Manrope",sans-serif;color:#283438;background:transparent;min-height:50px;-moz-appearance:textfield}
+.stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.stepper input:focus{outline:none}
+.stepper:focus-within{border-color:#174A5B;box-shadow:0 0 0 3px rgba(23,74,91,.18)}
+.stepper[data-invalid="true"]{border-color:#A33A2E}
+.spinner{width:16px;height:16px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .8s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* Lightbox */
+.lightbox{position:fixed;inset:0;z-index:90;background:rgba(10,30,38,.97);color:#FAF9F5;display:flex;flex-direction:column;padding:clamp(12px,2vw,28px)}
+.lb-side{flex:none}
+.lb-mobile{display:none}
+@media (max-width:700px){.lb-side{display:none}.lb-mobile{display:inline-flex}}
+/* Footer */
+.foot a{color:#DCE7E6;text-decoration:none}.foot a:hover{color:#FFFFFF;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#E98270}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.foot li a{display:inline-flex;min-height:36px;align-items:center}
+.sticky-cta{display:none}
+@media (max-width:767px){.sticky-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;gap:8px;padding:10px 12px;background:rgba(250,249,245,.97);border-top:1px solid #DDD2BE}.sticky-cta .btn{flex:1;min-height:50px;padding:0 10px;letter-spacing:.04em}.site-pad{padding-bottom:72px}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hide-sm{}
+.show-sm{display:none}
+@media (max-width:700px){.hide-sm{display:none!important}.show-sm{display:block}}
+@media (max-width:374px){.btn{padding:0 18px;font-size:12px}.chip{padding:0 14px}.wrap{padding-left:16px;padding-right:16px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+.home-hero{min-height:clamp(640px,62vw,920px)}
+.hero-copy{position:relative;z-index:2;padding-top:140px;padding-bottom:clamp(110px,10vw,150px)}
+.hero-foot{position:absolute;left:0;right:0;bottom:0;z-index:3;border-top:1px solid rgba(250,249,245,.22)}
+.hero-foot .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px;flex-wrap:wrap}
+.hero-cue{display:inline-flex;align-items:center;gap:10px;color:#FAF9F5;text-decoration:none;min-height:44px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.slide-bar{display:flex;gap:6px;align-items:center}
+.slide-bar span{display:block;height:2px;border-radius:2px;background:rgba(250,249,245,.4);transition:width .5s ease,background .5s ease}
+/* Intro */
+.intro-photos{position:relative;padding:0 0 clamp(60px,7vw,110px) clamp(0px,4vw,60px)}
+.intro-inset{position:absolute;left:0;bottom:0;width:44%;border:10px solid #FAF9F5;border-radius:8px}
+.intro-badge{position:absolute;right:-14px;top:clamp(30px,5vw,70px);background:#E98270;color:#0F3340;border-radius:999px;width:116px;height:116px;display:flex;align-items:center;justify-content:center;text-align:center;font:400 17px/1.15 "DM Serif Display",serif;transform:rotate(-8deg);padding:12px}
+@media (max-width:900px){.intro-badge{right:8px}}
+/* Featured dishes */
+.dish-lead{position:relative;border-radius:8px;overflow:hidden;min-height:clamp(460px,46vw,680px);display:flex;align-items:flex-end;color:#FAF9F5}
+.dish-lead-copy{position:relative;z-index:2;padding:clamp(24px,3vw,44px);width:100%;background:linear-gradient(180deg,rgba(15,51,64,0),rgba(15,51,64,.9) 45%)}
+.dish-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:22px;align-items:center;padding:18px 0;border-bottom:1px solid #DDD2BE}
+.dish-row:first-child{padding-top:0}
+.dish-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px}
+/* Menu category explorer */
+.cat-explorer{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(32px,6vw,96px);align-items:start}
+.cat-list{list-style:none;margin:0;padding:0;border-top:1px solid #C9BBA0}
+.cat-link{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:16px;align-items:center;padding:20px 4px;border-bottom:1px solid #C9BBA0;text-decoration:none;color:#283438;transition:padding .35s ease,color .3s}
+.cat-link:hover,.cat-link:focus-visible,.cat-link[data-on="true"]{padding-left:16px;color:#174A5B}
+.cat-num{font:400 15px/1 "DM Serif Display",serif;color:#A84B39}
+.cat-name{font:400 clamp(28px,3vw,44px)/1.05 "DM Serif Display",serif}
+.cat-blurb{display:block;font:500 14px/1.5 "Manrope",sans-serif;color:#4E5958;margin-top:6px}
+.cat-go{width:44px;height:44px;border-radius:999px;border:1.5px solid currentColor;display:inline-flex;align-items:center;justify-content:center;transition:background .3s,color .3s}
+.cat-link:hover .cat-go,.cat-link[data-on="true"] .cat-go{background:#174A5B;color:#FAF9F5;border-color:#174A5B}
+.cat-preview{position:sticky;top:110px}
+.cat-thumb{display:none}
+@media (max-width:900px){.cat-explorer{grid-template-columns:minmax(0,1fr)}.cat-preview{display:none}.cat-thumb{display:block;width:64px;height:64px;border-radius:6px}.cat-link{grid-template-columns:64px minmax(0,1fr) auto}.cat-num{display:none}}
+/* Experience band */
+.xp-band{position:relative;min-height:clamp(520px,50vw,760px);display:flex;align-items:center}
+.xp-card{position:relative;z-index:2;background:#FAF9F5;border-radius:8px;padding:clamp(28px,4vw,56px);width:min(560px,100%);box-shadow:0 30px 60px -30px rgba(15,51,64,.45)}
+.xp-points{list-style:none;margin:26px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 22px}
+.xp-points li{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.5;color:#3E4A4D}
+.xp-points strong{display:block;color:#283438;font-weight:700}
+@media (max-width:560px){.xp-points{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:900px){.xp-band{display:block;min-height:0}.xp-band .xp-photo{position:relative!important;height:340px}.xp-card{margin-top:-80px}}
+/* Gallery collage */
+.collage{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:clamp(70px,7vw,110px);gap:14px}
+.c1{grid-column:1 / span 5;grid-row:span 5}.c2{grid-column:6 / span 4;grid-row:span 3}.c3{grid-column:10 / span 3;grid-row:span 4}.c4{grid-column:6 / span 4;grid-row:span 2}.c5{grid-column:10 / span 3;grid-row:span 1}
+@media (max-width:900px){.collage{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px}.c1{grid-column:span 2;grid-row:span 2}.c2,.c3,.c4,.c5{grid-column:span 1;grid-row:span 1}.c5{display:none}}
+.collage a{position:relative;display:block;border-radius:6px;overflow:hidden}
+/* Reservation CTA */
+.res-cta{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);min-height:clamp(480px,42vw,620px)}
+@media (max-width:900px){.res-cta{grid-template-columns:minmax(0,1fr)}.res-cta .ph{min-height:300px}}
+
+</style>
+</helmet>
+<div class="site-pad {{notesCls}}">
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr {{hdrCls}}">
+<div class="wrap hdr-in" style="height: {{hdrH}}px">
+<a class="logo" href="Main.dc.html" aria-label="Coastal Kitchen, home"><svg width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true"><circle cx="21" cy="21" r="19.5" stroke="currentColor" stroke-width="1.3"></circle><path d="M9 19c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0" stroke="#E98270" stroke-width="1.6" stroke-linecap="round"></path><path d="M9 25c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg><span><span class="logo-name">Coastal Kitchen</span><span class="logo-sub">Seafood · Santa Rosa</span></span></a>
+<nav aria-label="Primary" class="nav-links">
+<a class="nav-link" href="Main.dc.html" aria-current="page">Home</a>
+<a class="nav-link" href="Menu.dc.html">Menu</a>
+<a class="nav-link" href="About.dc.html">About</a>
+<a class="nav-link" href="Experience.dc.html">Our Experience</a>
+<a class="nav-link" href="Gallery.dc.html">Gallery</a>
+<a class="nav-link" href="Contact.dc.html">Contact</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 10px">
+<a class="btn btn-coral nav-cta" href="Reservations.dc.html" style="min-height: 48px; padding: 0 24px">Reservations</a>
+<a class="btn btn-coral nav-res-sm" href="Reservations.dc.html" style="min-height: 44px; padding: 0 16px; font-size: 12px">Reserve</a>
+<button type="button" class="icon-btn nav-toggle" aria-label="Open menu" aria-expanded="{{menuExpanded}}" aria-controls="site-drawer" onClick="{{openMenu}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18"/><path d="M3 12h18"/><path d="M3 17h12"/></svg></button>
+</div>
+</div>
+</header>
+<sc-if value="{{menu}}" hint-placeholder-val="{{false}}">
+<div class="drawer" onClick="{{backdropClose}}">
+<div id="site-drawer" class="drawer-panel" role="dialog" aria-modal="true" aria-label="Site menu" onKeyDown="{{menuKey}}">
+<div style="display: flex; justify-content: space-between; align-items: center; min-height: 60px">
+<span class="label" style="color: #F4C5BA">Menu</span>
+<button type="button" class="icon-btn" autoFocus="{{true}}" aria-label="Close menu" onClick="{{closeMenu}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12"/><path d="M18 6 6 18"/></svg></button>
+</div>
+<nav aria-label="Mobile" style="display: flex; flex-direction: column; margin-top: 10px">
+<a class="mlink" href="Main.dc.html" aria-current="page">Home<span class="label" aria-hidden="true">01</span></a>
+<a class="mlink" href="Menu.dc.html">Menu<span class="label" aria-hidden="true">02</span></a>
+<a class="mlink" href="About.dc.html">About<span class="label" aria-hidden="true">03</span></a>
+<a class="mlink" href="Experience.dc.html">Our Experience<span class="label" aria-hidden="true">04</span></a>
+<a class="mlink" href="Gallery.dc.html">Gallery<span class="label" aria-hidden="true">05</span></a>
+<a class="mlink" href="Reservations.dc.html">Reservations<span class="label" aria-hidden="true">06</span></a>
+<a class="mlink" href="Contact.dc.html">Contact<span class="label" aria-hidden="true">07</span></a>
+</nav>
+<div style="margin-top: auto; padding-top: 30px; display: flex; flex-direction: column; gap: 10px">
+<a class="btn btn-coral" href="Reservations.dc.html" style="width: 100%">Reserve Your Table <span class="arr" aria-hidden="true">→</span></a>
+<a class="btn btn-ghost-light" href="tel:+18563821942" style="width: 100%">Call +1 (856) 382-1942</a>
+<p class="hint" style="text-align: center; margin-top: 8px; color: #C9D6D5">8945 Forest Road, Santa Rosa, CA 95401</p>
+</div>
+</div>
+</div>
+</sc-if>
+<main id="main">
+<section aria-labelledby="hero-h" class="hero home-hero" onMouseEnter="{{heroHold}}" onMouseLeave="{{heroRelease}}" onFocus="{{heroHold}}" onBlur="{{heroRelease}}" onTouchStart="{{heroHold}}">
+<div aria-hidden="true" style="position: absolute; inset: 0">
+<sc-for list="{{slides}}" as="s" hint-placeholder-count="3">
+<div class="ph {{s.cls}}" style="position: absolute; inset: 0; opacity: {{s.op}}; transition: opacity 1.8s ease"><div class="ph {{s.cls}} kb" style="position: absolute; inset: 0"></div></div>
+</sc-for>
+<div class="hero-shade"></div>
+</div>
+<p class="ph-tag">Photo placeholder · {{slideLabel}}</p>
+<div class="wrap hero-copy">
+<p class="eyebrow reveal">Fresh flavors. Coastal spirit.</p>
+<h1 id="hero-h" class="disp reveal-2" style="margin-top: 24px; font-size: clamp(54px, 7.6vw, 124px); max-width: 12ch">A Taste of the Coast, <em>Served Fresh.</em></h1>
+<p class="lead reveal-3" style="max-width: 500px; margin-top: 26px">Discover thoughtfully prepared seafood and a welcoming dining experience inspired by the beauty of coastal cuisine.</p>
+<div class="reveal-3" style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px">
+<a class="btn btn-light" href="Menu.dc.html">Explore Our Menu <span class="arr" aria-hidden="true">→</span></a>
+<a class="btn btn-coral" href="Reservations.dc.html">Reserve Your Table</a>
+</div>
+</div>
+<div class="hero-foot">
+<div class="wrap">
+<a class="hero-cue" href="#intro-h"><svg class="scrollcue" width="14" height="22" viewBox="0 0 14 22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 1v18M2 14l5 6 5-6"></path></svg>Scroll to discover</a>
+<p class="hide-sm" style="font-size: 13.5px; color: #DCE7E6">8945 Forest Road, Santa Rosa · <a href="tel:+18563821942" style="color: #FAF9F5">+1 (856) 382-1942</a></p>
+<div style="display: flex; align-items: center; gap: 14px">
+<div class="slide-bar" aria-hidden="true"><sc-for list="{{slides}}" as="s" hint-placeholder-count="3"><span style="width: {{s.w}}px; background: {{s.bg}}"></span></sc-for></div>
+<button type="button" class="icon-btn" style="width: 44px; height: 44px; color: #FAF9F5" aria-label="{{pauseLabel}}" onClick="{{togglePause}}"><sc-if value="{{paused}}" hint-placeholder-val="{{false}}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg></sc-if><sc-if value="{{playing}}" hint-placeholder-val="{{true}}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5v14"/><path d="M15 5v14"/></svg></sc-if></button>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="intro-h" class="section">
+<div class="wrap g12" style="align-items: center">
+<div style="grid-column: span 5">
+<p class="eyebrow">Welcome to Coastal Kitchen</p>
+<h2 id="intro-h" class="h2" style="font-size: clamp(42px, 4.8vw, 76px); scroll-margin-top: 110px">Where Coastal Flavors Meet <em>Warm Hospitality.</em></h2>
+<span class="wave-rule" style="margin-top: 30px"></span>
+<p class="lead" style="margin-top: 26px">Coastal Kitchen is a seafood restaurant in Santa Rosa, California, bringing coastal-inspired cooking to a relaxed, welcoming dining room.</p>
+<p class="lead" style="margin-top: 14px">It’s a place for fresh-tasting plates, easy conversation and the kind of meal you’ll want to come back for.</p>
+<p class="todo" style="margin-top: 24px"><span class="todo-tag">Client to supply</span>A short introduction in Allison Reed’s own words. Founding year, history, chef details and any sourcing claims are left out until supplied and verified.</p>
+<a class="tlink" href="About.dc.html" style="margin-top: 24px">Read Our Story <span class="arr" aria-hidden="true">→</span></a>
+</div>
+<div style="grid-column: 7 / span 6">
+<div class="intro-photos">
+<div class="ph ph-deep " style="aspect-ratio: 6 / 5; border-radius: 8px"><div class="ph ph-deep kb" style="position: absolute; inset: 0" aria-hidden="true"></div><p class="ph-tag">Dining room interior, evening light</p></div>
+<div class="intro-inset"><div class="ph ph-coral " style="aspect-ratio: 1 / 1; border-radius: 4px"><p class="ph-tag">Detail: grilled prawns</p></div></div>
+<p class="intro-badge" aria-hidden="true">Coastal cooking, Santa Rosa</p>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="dish-h" class="section shell tide" style="padding-top: clamp(80px, 9vw, 140px)">
+<div class="wrap">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: clamp(36px, 4vw, 60px)">
+<div><p class="eyebrow">Featured dishes</p><h2 id="dish-h" class="h2">From our <em>kitchen.</em></h2></div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<a class="btn btn-ghost" href="Menu.dc.html">Explore Full Menu <span class="arr" aria-hidden="true">→</span></a>
+<a class="btn btn-coral" href="Reservations.dc.html">Reserve Your Table</a>
+</div>
+</div>
+<div class="g12" style="align-items: stretch">
+<article aria-labelledby="dl-h" class="dish-lead zoom-host" style="grid-column: span 7">
+<div style="position: absolute; inset: 0"><div class="ph ph-coral " style="position: absolute; inset: 0"><div class="ph ph-coral zoom" style="position: absolute; inset: 0" aria-hidden="true"></div></div></div>
+<p class="ph-tag" style="top: 18px; bottom: auto">Photo placeholder · Signature seafood plate</p>
+<div class="dish-lead-copy">
+<p style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center"><span class="label" style="color: #F4C5BA">Chef’s feature · Seafood</span><span class="sample">Sample</span></p>
+<h3 id="dl-h" class="disp" style="font-size: clamp(34px, 3.4vw, 52px); margin-top: 14px">Sample Signature Dish</h3>
+<p style="margin-top: 12px; max-width: 460px; line-height: 1.7; color: #DCE7E6">Placeholder for a Coastal Kitchen signature dish. Name, description and price to be supplied by the restaurant.</p>
+<p style="margin-top: 16px; font-weight: 700; color: #F4C5BA">Price to be supplied</p>
+</div>
+</article>
+<div style="grid-column: 8 / span 5; display: flex; flex-direction: column; justify-content: space-between">
+<sc-for list="{{supporting}}" as="d" hint-placeholder-count="3">
+<article class="dish-row">
+<div class="zoom-host" style="position: relative; aspect-ratio: 1 / 1; border-radius: 6px">
+<div class="ph {{d.cls}}" style="position: absolute; inset: 0" aria-hidden="true"><div class="ph {{d.cls}} zoom" style="position: absolute; inset: 0"></div><p class="ph-tag" style="left: 8px; bottom: 8px; font-size: 9px">{{d.photo}}</p></div>
+</div>
+<div>
+<p style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center"><span class="label">{{d.cat}}</span><span class="sample">Sample</span></p>
+<h3 class="h3" style="margin-top: 10px">{{d.name}}</h3>
+<p class="hint" style="margin-top: 6px">Description to be supplied by Coastal Kitchen.</p>
+<div class="dish-meta"><span class="price-tbc">Price to be supplied</span><a class="tlink" href="{{d.href}}" style="min-height: 40px">View on menu <span class="sr">: {{d.name}}</span><span class="arr" aria-hidden="true">→</span></a></div>
+</div>
+</article>
+</sc-for>
+</div>
+</div>
+<p class="todo" style="margin-top: 40px"><span class="todo-tag">Client to supply</span>Signature dishes, dish photography, descriptions and prices. Every dish shown is a clearly marked sample: no real dishes, prices or availability are invented.</p>
+</div>
+</section>
+
+<section aria-labelledby="cat-h" class="section">
+<div class="wrap cat-explorer">
+<div>
+<p class="eyebrow">The menu</p>
+<h2 id="cat-h" class="h2">Six ways <em>to begin.</em></h2>
+<p class="lead" style="margin-top: 18px; max-width: 480px">Choose a section to jump straight to it on the menu.</p>
+<ul class="cat-list" style="margin-top: 36px">
+<sc-for list="{{cats}}" as="c" hint-placeholder-count="6">
+<li><a class="cat-link" href="{{c.href}}" data-on="{{c.on}}" onMouseEnter="{{c.pick}}" onFocus="{{c.pick}}">
+<span class="cat-num" aria-hidden="true">{{c.num}}</span>
+<span class="ph {{c.cls}} cat-thumb" aria-hidden="true"></span>
+<span><span class="cat-name">{{c.name}}</span><span class="cat-blurb">{{c.blurb}}</span></span>
+<span class="cat-go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></span>
+</a></li>
+</sc-for>
+</ul>
+</div>
+<div class="cat-preview" aria-hidden="true">
+<div class="ph {{catCls}}" style="aspect-ratio: 4 / 5; border-radius: 8px; transition: background-color .6s ease"><p class="ph-tag">Photo placeholder · {{catPhoto}}</p></div>
+<p class="serif" style="font-size: 26px; margin-top: 18px">{{catName}}</p>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="xp-h" class="xp-band">
+<div class="xp-photo zoom-host" style="position: absolute; inset: 0"><div class="ph ph-deep " style="position: absolute; inset: 0"><div class="ph ph-deep kb" style="position: absolute; inset: 0" aria-hidden="true"></div><p class="ph-tag">Wide view of the dining room</p></div></div>
+<div class="wrap" style="position: relative; display: flex; justify-content: flex-end">
+<div class="xp-card">
+<p class="eyebrow">The dining experience</p>
+<h2 id="xp-h" class="h2" style="font-size: clamp(36px, 3.6vw, 54px)">Relaxed, warm <em>and unhurried.</em></h2>
+<p class="lead" style="margin-top: 16px">A coastal-inspired setting for weeknight dinners, long lunches and the occasions worth celebrating.</p>
+<ul class="xp-points">
+<li><span style="color: #A84B39"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0 0 12 3z"/></svg></span><span><strong>Ambience</strong>Soft light and a calm, coastal palette.</span></li>
+<li><span style="color: #A84B39"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18"/><path d="M6 9v11"/><path d="M18 9v11"/><path d="M8 5h8"/></svg></span><span><strong>The dining room</strong>Room to settle in and share a meal.</span></li>
+<li><span style="color: #A84B39"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.4-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10C19.5 15.6 12 20 12 20z"/></svg></span><span><strong>Hospitality</strong>A welcoming team and an easy pace.</span></li>
+<li><span style="color: #A84B39"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4"/><path d="M12 17v4"/><path d="M3 12h4"/><path d="M17 12h4"/><path d="m6 6 2.5 2.5"/><path d="m15.5 15.5 2.5 2.5"/><path d="m6 18 2.5-2.5"/><path d="m15.5 8.5 2.5-2.5"/></svg></span><span><strong>Special occasions</strong>Birthdays, date nights and gatherings.</span></li>
+</ul>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px">
+<a class="btn" href="Experience.dc.html">Discover Our Experience <span class="arr" aria-hidden="true">→</span></a>
+<a class="tlink" href="Reservations.dc.html">Reserve a table <span class="arr" aria-hidden="true">→</span></a>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="gal-h" class="section">
+<div class="wrap">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: clamp(32px, 4vw, 52px)">
+<div><p class="eyebrow">Gallery</p><h2 id="gal-h" class="h2">A closer look at <em>the coast.</em></h2></div>
+<a class="btn btn-ghost" href="Gallery.dc.html">Explore Gallery <span class="arr" aria-hidden="true">→</span></a>
+</div>
+<div class="collage">
+<a class="c1 zoom-host" href="Gallery.dc.html?category=Seafood%20%26%20Dishes" aria-label="Gallery: seafood and dishes"><div class="ph ph-coral " style="position: absolute; inset: 0"><div class="ph ph-coral zoom" style="position: absolute; inset: 0" aria-hidden="true"></div><p class="ph-tag">Seafood platter</p></div></a>
+<a class="c2 zoom-host" href="Gallery.dc.html?category=Restaurant%20Interiors" aria-label="Gallery: restaurant interiors"><div class="ph ph-deep " style="position: absolute; inset: 0"><div class="ph ph-deep zoom" style="position: absolute; inset: 0" aria-hidden="true"></div><p class="ph-tag">Restaurant interior</p></div></a>
+<a class="c3 zoom-host" href="Gallery.dc.html?category=Food%20Preparation" aria-label="Gallery: food preparation"><div class="ph ph-char " style="position: absolute; inset: 0"><div class="ph ph-char zoom" style="position: absolute; inset: 0" aria-hidden="true"></div><p class="ph-tag">Kitchen preparation</p></div></a>
+<a class="c4 zoom-host" href="Gallery.dc.html?category=Dining%20Moments" aria-label="Gallery: dining moments"><div class="ph ph-sand " style="position: absolute; inset: 0"><div class="ph ph-sand zoom" style="position: absolute; inset: 0" aria-hidden="true"></div><p class="ph-tag">Table for two</p></div></a>
+<a class="c5 zoom-host" href="Gallery.dc.html" aria-label="Open the full gallery"><div class="ph ph-glass " style="position: absolute; inset: 0"><div class="ph ph-glass zoom" style="position: absolute; inset: 0" aria-hidden="true"></div><p class="ph-tag">Glassware detail</p></div></a>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="res-h" class="res-cta on-abyss">
+<div class="tide on-abyss" style="padding: clamp(64px, 8vw, 120px) clamp(20px, 6vw, 96px); display: flex; flex-direction: column; justify-content: center">
+<p class="eyebrow">Reservations</p>
+<h2 id="res-h" class="disp" style="font-size: clamp(46px, 5.6vw, 88px); margin-top: 22px; max-width: 12ch">Your Table by the Coast <em>Awaits.</em></h2>
+<p class="lead" style="margin-top: 22px; max-width: 460px">Make your next dining experience memorable at Coastal Kitchen.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px">
+<a class="btn btn-coral" href="Reservations.dc.html">Reserve Your Table <span class="arr" aria-hidden="true">→</span></a>
+<a class="btn btn-ghost-light" href="tel:+18563821942">Call +1 (856) 382-1942</a>
+</div>
+<p class="hint" style="margin-top: 22px">Reservation requests are inquiries: our team will follow up to confirm.</p>
+</div>
+<div class="zoom-host" style="position: relative"><div class="ph ph-sand " style="position: absolute; inset: 0; min-height: 100%"><div class="ph ph-sand kb" style="position: absolute; inset: 0" aria-hidden="true"></div><p class="ph-tag">Set table, warm light</p></div></div>
+</section>
+</main>
+<footer class="foot on-abyss tide" style="padding: clamp(80px, 9vw, 120px) 0 34px">
+<div class="wrap">
+<div style="display: flex; flex-wrap: wrap; gap: 48px; justify-content: space-between; padding-bottom: 54px; border-bottom: 1px solid rgba(111,171,181,.3)">
+<div style="flex: 1 1 320px; max-width: 400px">
+<div style="color: #FAF9F5"><a class="logo" href="Main.dc.html" aria-label="Coastal Kitchen, home"><svg width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true"><circle cx="21" cy="21" r="19.5" stroke="currentColor" stroke-width="1.3"></circle><path d="M9 19c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0" stroke="#E98270" stroke-width="1.6" stroke-linecap="round"></path><path d="M9 25c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg><span><span class="logo-name">Coastal Kitchen</span><span class="logo-sub">Seafood · Santa Rosa</span></span></a></div>
+<p style="margin: 24px 0 28px; line-height: 1.75; font-size: 15px; color: #C9D6D5">A seafood restaurant in Santa Rosa, California, serving coastal-inspired dishes in a relaxed, welcoming dining room.</p>
+<a class="btn btn-coral" href="Reservations.dc.html">Reserve Your Table <span class="arr" aria-hidden="true">→</span></a>
+</div>
+<nav aria-label="Footer" style="flex: 0 1 170px">
+<p class="label" style="margin-bottom: 14px; color: #F4C5BA">Explore</p>
+<ul>
+<li><a href="Main.dc.html">Home</a></li>
+<li><a href="Menu.dc.html">Menu</a></li>
+<li><a href="About.dc.html">About</a></li>
+<li><a href="Experience.dc.html">Our Experience</a></li>
+<li><a href="Gallery.dc.html">Gallery</a></li>
+<li><a href="Reservations.dc.html">Reservations</a></li>
+<li><a href="Contact.dc.html">Contact</a></li>
+</ul>
+</nav>
+<div style="flex: 0 1 290px">
+<p class="label" style="margin-bottom: 14px; color: #F4C5BA">Visit &amp; contact</p>
+<address style="font-style: normal; line-height: 1.75; color: #DCE7E6; font-size: 15px">
+<a href="https://www.google.com/maps/search/?api=1&amp;query=8945+Forest+Road%2C+Santa+Rosa%2C+CA+95401" target="_blank" rel="noopener noreferrer">8945 Forest Road<br>Santa Rosa, CA 95401, USA<span class="sr"> (opens Google Maps in a new tab)</span></a><br>
+<a href="tel:+18563821942" style="display: inline-flex; min-height: 40px; align-items: center">+1 (856) 382-1942</a><br>
+<a href="mailto:coastalkitchen@outlook.com" style="display: inline-flex; min-height: 40px; align-items: center; word-break: break-all">coastalkitchen@outlook.com</a>
+</address>
+<a class="tlink" href="https://www.google.com/maps/dir/?api=1&amp;destination=8945+Forest+Road%2C+Santa+Rosa%2C+CA+95401" target="_blank" rel="noopener noreferrer" style="margin-top: 6px">Get Directions <span class="arr" aria-hidden="true">↗</span><span class="sr"> (opens Google Maps in a new tab)</span></a>
+</div>
+<div style="flex: 0 1 240px">
+<p class="label" style="margin-bottom: 14px; color: #F4C5BA">Hours</p>
+<p style="font-size: 15px; line-height: 1.7; color: #DCE7E6">Opening hours to be confirmed. Please call before visiting.</p>
+<p class="todo" style="margin-top: 14px"><span class="todo-tag">Placeholder</span>Opening hours and social media accounts will appear here once Coastal Kitchen confirms them.</p>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; padding-top: 26px; font-size: 13px; color: #C9D6D5">
+<p>© 2026 Coastal Kitchen. All rights reserved.</p>
+<p>Reservation inquiries are confirmed by our team. Menu items and prices are subject to confirmation.</p>
+</div>
+</div>
+</footer>
+<div class="sticky-cta" role="region" aria-label="Quick actions">
+<a class="btn btn-coral" href="Reservations.dc.html">Reserve a Table</a>
+<a class="btn btn-ghost" href="tel:+18563821942">Call</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"heroAutoplay":{"editor":"boolean","default":true,"label":"Hero photos change automatically","section":"Hero"},"heroSeconds":{"editor":"number","min":6,"max":8,"step":1,"default":7,"label":"Seconds per hero photo","section":"Hero"},"clientNotes":{"editor":"boolean","default":true,"label":"Show “client to supply” notes","section":"Presentation"},"$preview":{"width":1440,"height":7400}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { menu: false, scrolled: false, slide: 0, paused: false, hold: false, cat: 0 };
+  }
+  navMount() {
+  this._onScroll = () => {
+    const s = window.scrollY > 40;
+    if (s !== !!this.state.scrolled) this.setState({ scrolled: s });
+    if (this.onScrollExtra) this.onScrollExtra();
+  };
+  window.addEventListener('scroll', this._onScroll, { passive: true });
+  this._onScroll();
+}
+navUnmount() {
+  if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+}
+navVals() {
+  // The header sits clear over each page's photo hero and turns solid once the page scrolls (or the drawer opens).
+  const solid = !!this.state.scrolled;
+  return {
+    notesCls: this.props.clientNotes === false ? 'hide-notes' : '',
+    hdrCls: solid ? 'hdr-solid' : 'hdr-clear',
+    hdrH: solid ? 72 : 96,
+    menu: !!this.state.menu,
+    menuExpanded: this.state.menu ? 'true' : 'false',
+    openMenu: () => this.setState({ menu: true }),
+    closeMenu: () => this.setState({ menu: false }),
+    backdropClose: (e) => { if (e.target === e.currentTarget) this.setState({ menu: false }); },
+    menuKey: (e) => {
+      if (e.key === 'Escape') { this.setState({ menu: false }); return; }
+      if (e.key !== 'Tab') return;
+      const nodes = Array.from(e.currentTarget.querySelectorAll('a[href], button')).filter((b) => b.offsetParent !== null);
+      if (!nodes.length) return;
+      const first = nodes[0], last = nodes[nodes.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  };
+}
+
+  heroSlides() {
+    return [
+      { cls: 'ph-coral', label: 'Grilled seafood, plated, natural light' },
+      { cls: 'ph-deep', label: 'Prawns over ice, close up' },
+      { cls: '', label: 'A seafood platter on the table' }
+    ];
+  }
+  categories() {
+    // Menu section names from the brief. Descriptions are general, not claims about specific dishes.
+    return [
+      { id: 'seafood', name: 'Seafood', blurb: 'From the sea, prepared with care.', cls: 'ph-coral', photo: 'Seafood dish' },
+      { id: 'appetizers', name: 'Appetizers', blurb: 'Small plates to start the table.', cls: 'ph-sand', photo: 'Appetizers to share' },
+      { id: 'mains', name: 'Main Courses', blurb: 'Plates for the main event.', cls: 'ph-deep', photo: 'Main course, plated' },
+      { id: 'sides', name: 'Sides', blurb: 'To share alongside.', cls: 'ph-glass', photo: 'Sides on the table' },
+      { id: 'desserts', name: 'Desserts', blurb: 'A sweet finish.', cls: 'ph-char', photo: 'Dessert, close up' },
+      { id: 'beverages', name: 'Beverages', blurb: 'Something to pour alongside your meal.', cls: '', photo: 'Drinks at the bar' }
+    ];
+  }
+  startTimer() {
+    clearInterval(this._t);
+    if (this.props.heroAutoplay === false) return;
+    const secs = Math.min(8, Math.max(6, Number(this.props.heroSeconds) || 7));
+    this._t = setInterval(() => {
+      if (this.state.paused || this.state.hold || document.hidden || this._reduced) return;
+      this.setState({ slide: (this.state.slide + 1) % this.heroSlides().length });
+    }, secs * 1000);
+  }
+  componentDidMount() {
+    this.navMount();
+    this._reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (this._reduced) this.setState({ paused: true });
+    this.startTimer();
+  }
+  componentDidUpdate(prev) {
+    if (prev.heroSeconds !== this.props.heroSeconds || prev.heroAutoplay !== this.props.heroAutoplay) this.startTimer();
+  }
+  componentWillUnmount() { this.navUnmount(); clearInterval(this._t); clearTimeout(this._release); }
+  renderVals() {
+    const slides = this.heroSlides();
+    const auto = this.props.heroAutoplay !== false;
+    const paused = !auto || this.state.paused;
+    const cats = this.categories();
+    const cur = cats[this.state.cat] || cats[0];
+    return {
+      ...this.navVals(),
+      slides: slides.map((s, i) => ({ cls: s.cls, op: i === this.state.slide ? 1 : 0, w: i === this.state.slide ? 36 : 14, bg: i === this.state.slide ? '#E98270' : 'rgba(250,249,245,.45)' })),
+      slideLabel: slides[this.state.slide].label,
+      paused, playing: !paused,
+      pauseLabel: paused ? 'Play hero photos' : 'Pause hero photos',
+      togglePause: () => { if (this.props.heroAutoplay === false) return; this.setState({ paused: !this.state.paused }); },
+      // Hovering, focusing or touching the hero holds the current photo; it resumes a moment after.
+      heroHold: () => { clearTimeout(this._release); if (!this.state.hold) this.setState({ hold: true }); },
+      heroRelease: () => { clearTimeout(this._release); this._release = setTimeout(() => this.setState({ hold: false }), 1200); },
+      supporting: [
+        { cat: 'Seafood', name: 'Sample Seafood Dish No. 1', cls: 'ph-deep', photo: 'Seafood dish', href: 'Menu.dc.html#seafood' },
+        { cat: 'Appetizers', name: 'Sample Appetizer No. 1', cls: 'ph-sand', photo: 'Appetizer', href: 'Menu.dc.html#appetizers' },
+        { cat: 'Desserts', name: 'Sample Dessert No. 1', cls: 'ph-char', photo: 'Dessert', href: 'Menu.dc.html#desserts' }
+      ],
+      cats: cats.map((c, i) => ({ ...c, num: String(i + 1).padStart(2, '0'), href: 'Menu.dc.html#' + c.id, on: i === this.state.cat ? 'true' : 'false', pick: () => { if (this.state.cat !== i) this.setState({ cat: i }); } })),
+      catCls: cur.cls, catPhoto: cur.photo, catName: cur.name
+    };
+  }
+}
+</script>
+</body>
+</html>
